@@ -49,32 +49,51 @@ What's the time complexity?
 
 
  */
+// TODO:
+// function Stack(capacity) {
+//   // implement me...
+// }
 
 function Stack(capacity) {
   // implement me...
+  this.storage = [];
+  this.counter = 0;
 }
 
 Stack.prototype.push = function(value) {
   // implement me...
+  this.storage.push(value);
+  this.counter++;
 };
 // Time complexity:
 
 Stack.prototype.pop = function() {
   // implement me...
+  let item = this.storage.pop();
+  this.counter--;
+  return item;
 };
 // Time complexity:
 
 Stack.prototype.peek = function() {
   // implement me...
+  return this.storage[this.storage.length - 1];
 };
 // Time complexity:
 
 Stack.prototype.count = function() {
   // implement me...
+  return this.counter;
 };
 // Time complexity:
 
+let myStack = new Stack();
+myStack.push(5);
+myStack.push(6);
+myStack.push(7);
 
+console.log(myStack);
+console.log(myStack.peek());
 /*
 *** Exercises:
 
