@@ -56,14 +56,19 @@ What's the time complexity?
 
 function Stack(capacity) {
   // implement me...
+  this.capacity = capacity;
   this.storage = [];
   this.counter = 0;
 }
 
 Stack.prototype.push = function(value) {
   // implement me...
-  this.storage.push(value);
-  this.counter++;
+  if (this.counter < this.capacity) {
+    this.storage.push(value);
+    this.counter++;
+  } else {
+    console.log("Max Capacity")
+  }
 };
 // Time complexity:
 
@@ -86,14 +91,29 @@ Stack.prototype.count = function() {
   return this.counter;
 };
 // Time complexity:
+Stack.prototype.mininum = function minimum() {
+  // the first item that was added
+  return this.storage[0];
+}
 
-let myStack = new Stack();
-myStack.push(5);
-myStack.push(6);
+Stack.prototype.sorT = function sorT() {
+  this.storage.sort((a,b) => a - b);
+}
+
+let myStack = new Stack(8);
+myStack.push(12);
+myStack.push(10);
 myStack.push(7);
-
+myStack.push(53);
+myStack.push(53);
+myStack.push(53);
+myStack.push(53);
+myStack.push(53);
+myStack.push(53);
 console.log(myStack);
 console.log(myStack.peek());
+myStack.sorT();
+console.log(myStack);
 /*
 *** Exercises:
 
