@@ -100,20 +100,31 @@ Stack.prototype.sorT = function sorT() {
   this.storage.sort((a,b) => a - b);
 }
 
-let myStack = new Stack(8);
-myStack.push(12);
-myStack.push(10);
+Stack.prototype.until = function until(val) {
+  // pop pop, until the number get popped off is the target
+  // keep a counter inside
+  // return the counter
+  let counter = 0;
+  if (this.storage.indexOf(val) !== -1) {
+    for (let i = this.storage.length - 1; i > 0; i--) {
+      let curr = this.pop();
+      if (curr === val) {
+        return [counter, val];
+      }
+      counter++;
+    }
+  }
+
+}
+
+let myStack = new Stack(15);
+myStack.push(5);
+myStack.push(4);
+myStack.push(6);
 myStack.push(7);
-myStack.push(53);
-myStack.push(53);
-myStack.push(53);
-myStack.push(53);
-myStack.push(53);
-myStack.push(53);
-console.log(myStack);
-console.log(myStack.peek());
-myStack.sorT();
-console.log(myStack);
+
+console.log(myStack.until(4));
+
 /*
 *** Exercises:
 
