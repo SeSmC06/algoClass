@@ -50,30 +50,48 @@ What's the time complexity?
 
  */
 
-function Queue(capacity) {
+function Queue() {
   // implement me...
+  this.storage = {};
+  this.storageCounter = 0;
+  this.tracker = 1;
 }
 
 Queue.prototype.enqueue = function(value) {
   // implement me...
+  this.storageCounter++;
+  this.storage[this.storageCounter] = value;
+  return this.storage[this.storageCounter];
 };
 // Time complexity:
 
 Queue.prototype.dequeue = function() {
   // implement me...
+  
+  let tempReturn = this.storage[this.tracker];
+  delete this.storage[this.tracker];
+  this.tracker++;
+  return tempReturn;
 };
 // Time complexity:
 
 Queue.prototype.peek = function() {
   // implement me...
+  return this.storage[this.tracker];
 };
 
 Queue.prototype.count = function() {
   // implement me...
+  return this.storageCounter - this.tracker;
 };
 // Time complexity:
-
-
+let newQ = new Queue();
+newQ.enqueue(5);
+newQ.enqueue(6);
+newQ.enqueue(7);
+console.log(newQ);
+newQ.dequeue();
+console.log(newQ.peek());
 
 /*
 *** Exercises:
